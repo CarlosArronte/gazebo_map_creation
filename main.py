@@ -11,7 +11,12 @@ with open(ruta_csv, 'r') as f:
     for row in reader:
         try:
             if len(row) == 3:
-                pontos_centrais.append(Vector((float(row[0]), float(row[1]), float(row[2]))))
+                scaler = 1 #Mudar para diminuir el tamanho da pista
+                pontos_centrais.append(Vector((
+                    float(row[0])*scaler, 
+                    float(row[1])*scaler, 
+                    float(row[2])*scaler
+                    )))
             else:
                 print(f"Linha ignorada (formato incorreto): {row}")
         except ValueError as e:
